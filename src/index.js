@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Counter from "./Counter";
-import ToDo from "./ToDo";
+import Counter from "./counter/Counter";
+import ToDo from "./todo/ToDo";
 
 ReactDOM.render(
-   <div>
+   <>
       <Counter />
       <ToDo />
-   </div>,
+   </>,
    document.getElementById("root")
 );
