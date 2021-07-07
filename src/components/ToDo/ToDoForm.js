@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 const ToDoForm = (props) => {
-   const {todoList, setTodoList} = props;
+   const { todoList, setTodoList } = props;
 
    const [inputValue, setInputValue] = useState("");
 
@@ -11,13 +11,13 @@ const ToDoForm = (props) => {
       setInputValue(value);
    };
 
-   function handleAdd(e) {
+   const handleAdd = (e) => {
       e.preventDefault();
       setTodoList([
          ...todoList,
          { id: todoList[todoList.length - 1].id + 1, text: inputValue },
       ]);
-   }
+   };
 
    return (
       <form>
@@ -28,7 +28,12 @@ const ToDoForm = (props) => {
 };
 
 ToDoForm.propTypes = {
-   todoList: PropTypes.array,
+   todoList: PropTypes.arrayOf(
+      PropTypes.shape({
+         id: PropTypes.number,
+         text: PropTypes.string,
+      })
+   ),
    setTodoList: PropTypes.func,
 };
 

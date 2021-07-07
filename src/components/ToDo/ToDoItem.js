@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ToDoItem = (props) => {
-   const handleRemove = props.handleRemove;
-   const todoItem = props.todoItem;
+   const { todoItem, handleRemove } = props;
 
    return (
       <li>
@@ -20,7 +19,10 @@ const ToDoItem = (props) => {
 };
 
 ToDoItem.propTypes = {
-   todoItem: PropTypes.object,
+   todoItem: PropTypes.shape({
+      id: PropTypes.number,
+      text: PropTypes.string,
+   }),
    setTodoList: PropTypes.func,
 };
 

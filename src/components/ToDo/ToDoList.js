@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import ToDoItem from "./ToDoItem";
 
 const ToDoList = (props) => {
-   const todoList = props.todoList;
-   const setTodoList = props.setTodoList;
+   const { todoList, setTodoList } = props;
 
    const handleRemove = (todoItemID) => {
       const items = todoList.filter((item) => item.id !== todoItemID);
@@ -26,7 +25,12 @@ const ToDoList = (props) => {
 };
 
 ToDoList.propTypes = {
-   todoList: PropTypes.array,
+   todoList: PropTypes.arrayOf(
+      PropTypes.shape({
+         id: PropTypes.number,
+         text: PropTypes.string,
+      })
+   ),
    setTodoList: PropTypes.func,
 };
 
