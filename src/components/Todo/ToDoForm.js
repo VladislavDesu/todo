@@ -2,8 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 const ToDoForm = (props) => {
-   const todoList = props.todoList;
-   const setTodoList = props.setTodoList;
+   const {todoList, setTodoList} = props;
 
    const [inputValue, setInputValue] = useState("");
 

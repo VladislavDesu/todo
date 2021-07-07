@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Counter from "./counter/Counter";
-import ToDo from "./todo/ToDo";
+import Counter from "./components/Counter/Counter";
+import ToDo from "./components/Todo/ToDo";
 
 ReactDOM.render(
    <>

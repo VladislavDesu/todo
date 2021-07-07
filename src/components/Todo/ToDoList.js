@@ -6,12 +6,17 @@ const ToDoList = (props) => {
    const todoList = props.todoList;
    const setTodoList = props.setTodoList;
 
+   const handleRemove = (todoItemID) => {
+      const items = todoList.filter((item) => item.id !== todoItemID);
+      setTodoList(items);
+   };
+
    return (
       <ul>
          {todoList.map((item) => (
             <ToDoItem
                key={item.id}
-               setTodoList={setTodoList}
+               handleRemove={handleRemove}
                todoList={todoList}
                todoItem={item}
             />
