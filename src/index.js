@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import FirstApp from "./FirstApp";
-import SecondApp from "./SecondApp";
+import Counter from "./Counter";
+import ToDo from "./ToDo";
 
 ReactDOM.render(
    <div>
-      <FirstApp />
-      <SecondApp />
+      <Counter />
+      <ToDo />
    </div>,
    document.getElementById("root")
 );

@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function SecondApp() {
-   const data = [
-      { id: 1, text: "first" },
-      { id: 2, text: "second" },
-      { id: 3, text: "third" },
-   ];
+const data = [
+   { id: 1, text: "first" },
+   { id: 2, text: "second" },
+   { id: 3, text: "third" },
+];
 
+const ToDo = () => {
    const [todoList, setTodoList] = useState(data);
+   const [inputValue, setInputValue] = useState("");
 
-   function handleRemove(todoItemID) {
+   const handleRemove = (todoItemID) => {
       const items = todoList.filter((item) => item.id !== todoItemID);
       setTodoList(items);
    }
 
-   function handleChange(e) {
+   const handleChange = (e) => {
       const value = e.target.value;
       setInputValue(value);
    }
@@ -27,8 +28,6 @@ export default function SecondApp() {
          { id: todoList[todoList.length - 1].id + 1, text: inputValue },
       ]);
    }
-
-   const [inputValue, setInputValue] = useState("");
 
    return (
       <div>
@@ -54,3 +53,5 @@ export default function SecondApp() {
       </div>
    );
 }
+
+export default ToDo;
