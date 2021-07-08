@@ -6,7 +6,6 @@ const ModalItem = () => {
       e.stopPropagation();
       history.goBack();
    };
-   console.log(back);
 
    return (
       <div className="modal">

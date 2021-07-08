@@ -6,7 +6,8 @@ import ToDoSearch from "./ToDoSearch";
 import ToDoAddBtn from "./ToDoAddBtn";
 
 const ToDoForm = (props) => {
-   const { todoList, setTodoList, inputSearch, handleSearch } = props;
+   const { todoList, setTodoList, setFilter, inputSearch, handleSearch } =
+      props;
 
    const [inputValue, setInputValue] = useState("");
 
@@ -18,16 +19,16 @@ const ToDoForm = (props) => {
    const handleAdd = (e) => {
       e.preventDefault();
 
-      const text = inputValue === "" ? "пусто" : inputValue;
+      // const text = inputValue === "" ? "пусто" : inputValue;
 
-      setTodoList([
-         ...todoList,
-         {
-            id:
-               todoList.length === 0 ? 0 : todoList[todoList.length - 1].id + 1,
-            text: text,
-         },
-      ]);
+      // setFilter([
+      //    ...todoList,
+      //    {
+      //       id:
+      //          todoList.length === 0 ? 0 : todoList[todoList.length - 1].id + 1,
+      //       text: text,
+      //    },
+      // ]);
    };
 
    return (
@@ -47,6 +48,8 @@ ToDoForm.propTypes = {
       })
    ),
    setTodoList: PropTypes.func,
+   inputSearch: PropTypes.string,
+   handleSearch: PropTypes.func,
 };
 
 export default ToDoForm;
