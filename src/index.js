@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Counter from "./components/Counter/Counter";
 import ToDo from "./components/ToDo/ToDo";
+import ModalList from "./components/Modal/ModalList";
 import HeaderNav from "./components/Header/HeaderNav";
 
 ReactDOM.render(
@@ -16,6 +17,9 @@ ReactDOM.render(
          </Route>
          <Route path="/todo">
             <ToDo />
+         </Route>
+         <Route path="/modal">
+            <ModalList />
          </Route>
       </Switch>
    </Router>,
