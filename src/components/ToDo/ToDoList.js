@@ -13,13 +13,17 @@ const ToDoList = (props) => {
 
    return (
       <ul>
-         {todoSearchList.map((item) => (
-            <ToDoItem
-               key={item.id}
-               handleRemove={handleRemove}
-               todoItem={item}
-            />
-         ))}
+         {todoSearchList.length === 0 ? (
+            <li>Пусто</li>
+         ) : (
+            todoSearchList.map((item) => (
+               <ToDoItem
+                  key={item.id}
+                  handleRemove={handleRemove}
+                  todoItem={item}
+               />
+            ))
+         )}
       </ul>
    );
 };

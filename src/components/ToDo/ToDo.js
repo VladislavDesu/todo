@@ -18,7 +18,6 @@ const ToDo = () => {
          <ToDoTitle />
          <ToDoForm
             todoList={todoList}
-            todoSearchList={todoSearchList}
             setTodoList={setTodoList}
             setTodoSearchList={setTodoSearchList}
          />

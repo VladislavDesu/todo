@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 const ToDoForm = (props) => {
-   const { todoList, todoSearchList, setTodoList, setTodoSearchList } = props;
+   const { todoList, setTodoList, setTodoSearchList } = props;
 
    const [inputValue, setInputValue] = useState("");
    const [inputSearch, setSearchValue] = useState("");
@@ -14,27 +14,36 @@ const ToDoForm = (props) => {
 
    const handleSearch = (e) => {
       const value = e.target.value;
-      const items = todoSearchList.filter((item) => !item.text.indexOf(value));
+      const items = todoList.filter((item) =>
+         item.text.indexOf(value) >= 0 ? true : false
+      );
+
+      console.log(items);
 
       setSearchValue(value);
-      setTodoSearchList(value === "" ? todoList : items);
+      setTodoSearchList(value.length <= 0 ? todoList : items);
    };
 
    const handleAdd = (e) => {
       e.preventDefault();
-      console.log(todoList);
+
+      const text = inputValue === "" ? "пусто" : inputValue;
+
       setTodoSearchList([
          ...todoList,
          {
-            id: todoList[todoList.length - 1].id + 1,
-            text: inputValue,
+            id:
+               todoList.length === 0 ? 0 : todoList[todoList.length - 1].id + 1,
+            text: text,
          },
       ]);
+
       setTodoList([
          ...todoList,
          {
-            id: todoList[todoList.length - 1].id + 1,
-            text: inputValue,
+            id:
+               todoList.length === 0 ? 0 : todoList[todoList.length - 1].id + 1,
+            text: text,
          },
       ]);
    };
@@ -54,12 +63,6 @@ const ToDoForm = (props) => {
 
 ToDoForm.propTypes = {
    todoList: PropTypes.arrayOf(
-      PropTypes.shape({
-         id: PropTypes.number,
-         text: PropTypes.string,
-      })
-   ),
-   todoSearchList: PropTypes.arrayOf(
       PropTypes.shape({
          id: PropTypes.number,
          text: PropTypes.string,
