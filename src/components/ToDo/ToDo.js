@@ -3,7 +3,6 @@ import { useState } from "react";
 import ToDoForm from "./ToDoForm";
 import ToDoList from "./ToDoList";
 import ToDoTitle from "./ToDoTitle";
-import ToDoSearch from "./ToDoSearch";
 
 const data = [
    { id: 1, text: "first" },
@@ -13,17 +12,22 @@ const data = [
 
 const ToDo = () => {
    const [todoList, setTodoList] = useState(data);
-   const searchToDoList = todoList;
+   const [todoSearchList, setTodoSearchList] = useState(data);
    return (
       <div>
          <ToDoTitle />
-         <ToDoSearch
+         <ToDoForm
             todoList={todoList}
-            searchToDoList={searchToDoList}
+            todoSearchList={todoSearchList}
             setTodoList={setTodoList}
+            setTodoSearchList={setTodoSearchList}
          />
-         <ToDoForm todoList={todoList} setTodoList={setTodoList} />
-         <ToDoList todoList={todoList} setTodoList={setTodoList} />
+         <ToDoList
+            todoList={todoList}
+            todoSearchList={todoSearchList}
+            setTodoList={setTodoList}
+            setTodoSearchList={setTodoSearchList}
+         />
       </div>
    );
 };
