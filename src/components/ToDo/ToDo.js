@@ -12,7 +12,7 @@ const data = [
 
 const ToDo = () => {
    const [todoList, setTodoList] = useState(data);
-   const [filter, setFilter] = useState();
+   const [filter, setFilter] = useState(data);
    const [inputSearch, setSearchValue] = useState("");
 
    const handleSearch = (e) => {
