@@ -1,6 +1,10 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
+import ToDoAdd from "./ToDoAdd";
+import ToDoSearch from "./ToDoSearch";
+import ToDoAddBtn from "./ToDoAddBtn";
+
 const ToDoForm = (props) => {
    const { todoList, setTodoList, setTodoSearchList } = props;
 
@@ -17,8 +21,6 @@ const ToDoForm = (props) => {
       const items = todoList.filter((item) =>
          item.text.indexOf(value) >= 0 ? true : false
       );
-
-      console.log(items);
 
       setSearchValue(value);
       setTodoSearchList(value.length <= 0 ? todoList : items);
@@ -49,15 +51,11 @@ const ToDoForm = (props) => {
    };
 
    return (
-      <form>
-         <p>
-            <input type="text" value={inputSearch} onChange={handleSearch} />
-         </p>
-         <p>
-            <input type="text" value={inputValue} onChange={handleChange} />
-         </p>
-         <button onClick={handleAdd}>Add</button>
-      </form>
+      <div>
+         <ToDoSearch inputSearch={inputSearch} handleSearch={handleSearch} />
+         <ToDoAdd inputValue={inputValue} handleChange={handleChange} />
+         <ToDoAddBtn handleAdd={handleAdd} />
+      </div>
    );
 };
 
