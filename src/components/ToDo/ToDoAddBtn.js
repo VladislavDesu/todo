@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 
 const ToDoAddBtn = (props) => {
    const { handleAdd } = props;
+
    return (
       <>
          <button onClick={handleAdd}>Add</button>

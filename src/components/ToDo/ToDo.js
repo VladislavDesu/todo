@@ -12,21 +12,33 @@ const data = [
 
 const ToDo = () => {
    const [todoList, setTodoList] = useState(data);
-   const [todoSearchList, setTodoSearchList] = useState(data);
+
+   const [inputSearch, setSearchValue] = useState("");
+   const [filter, setFilter] = useState(data);
+
+   const handleSearch = (e) => {
+      const value = e.target.value;
+      setSearchValue(value);
+
+      const lowercasedFilter = inputSearch.toLowerCase();
+      const filteredData = todoList.filter((item) => {
+         return Object.keys(item).some((key) => {
+            return item.text.toLowerCase().includes(lowercasedFilter);
+         });
+      });
+      setFilter(filteredData);
+   };
+
    return (
       <div>
          <ToDoTitle />
          <ToDoForm
             todoList={todoList}
             setTodoList={setTodoList}
-            setTodoSearchList={setTodoSearchList}
+            inputSearch={inputSearch}
+            handleSearch={handleSearch}
          />
-         <ToDoList
-            todoList={todoList}
-            todoSearchList={todoSearchList}
-            setTodoList={setTodoList}
-            setTodoSearchList={setTodoSearchList}
-         />
+         <ToDoList todoList={filter} setTodoList={setTodoList} />
       </div>
    );
 };

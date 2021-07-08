@@ -3,20 +3,19 @@ import PropTypes from "prop-types";
 import ToDoItem from "./ToDoItem";
 
 const ToDoList = (props) => {
-   const { todoList, todoSearchList, setTodoList, setTodoSearchList } = props;
+   const { todoList, setTodoList } = props;
 
    const handleRemove = (todoItemID) => {
       const items = todoList.filter((item) => item.id !== todoItemID);
-      setTodoSearchList(items);
       setTodoList(items);
    };
 
    return (
       <ul>
-         {todoSearchList.length === 0 ? (
+         {todoList.length === 0 ? (
             <li>Пусто</li>
          ) : (
-            todoSearchList.map((item) => (
+            todoList.map((item) => (
                <ToDoItem
                   key={item.id}
                   handleRemove={handleRemove}
@@ -35,14 +34,7 @@ ToDoList.propTypes = {
          text: PropTypes.string,
       })
    ),
-   todoSearchList: PropTypes.arrayOf(
-      PropTypes.shape({
-         id: PropTypes.number,
-         text: PropTypes.string,
-      })
-   ),
    setTodoList: PropTypes.func,
-   setTodoSearchList: PropTypes.func,
 };
 
 export default ToDoList;

@@ -9,7 +9,8 @@ const ModalItem = () => {
    console.log(back);
 
    return (
-      <div className="modal-overlay">
+      <div className="modal">
+         <div className="modal-overlay" onClick={back}></div>
          <div className="modal-content">
             <div className="modal-head">
                <h2 className="modal-title">Modal 1</h2>
