@@ -1,11 +1,17 @@
+import { Link, useRouteMatch } from "react-router-dom";
+
 import PropTypes from "prop-types";
 
 const ToDoItem = (props) => {
    const { handleClick, todoItem } = props;
 
+   const match = useRouteMatch();
+
    return (
       <li>
-         <p>{todoItem.text}</p>
+         <Link to={`${match.url}/${todoItem.text.toLowerCase()}`}>
+            {todoItem.text}
+         </Link>
          <button
             onClick={() => {
                handleClick(todoItem.id);
