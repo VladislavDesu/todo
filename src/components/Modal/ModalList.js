@@ -2,7 +2,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import ModalItem from "./ModalItem";
 const ModalList = () => {
    return (
-      <div>
+      <>
          <ul>
             <Link to="/modal/1">Modal 1</Link>
          </ul>
@@ -12,7 +12,7 @@ const ModalList = () => {
                <ModalItem />
             </Route>
          </Switch>
-      </div>
+      </>
    );
 };
 

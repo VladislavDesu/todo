@@ -12,7 +12,7 @@ ReactDOM.render(
       <HeaderNav />
 
       <Switch>
-         <Route path="/counter">
+         <Route exact path="/">
             <Counter />
          </Route>
          <Route path="/todo">
