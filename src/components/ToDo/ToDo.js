@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-import ToDoForm from "./ToDoForm";
 import ToDoList from "./ToDoList";
 import ToDoTitle from "./ToDoTitle";
+import ToDoAdd from "./ToDoAdd";
+import ToDoSearch from "./ToDoSearch";
+import ToDoAddBtn from "./ToDoAddBtn";
 
 const data = [
    { id: 1, text: "first" },
@@ -12,36 +14,35 @@ const data = [
 
 const ToDo = () => {
    const [todoList, setTodoList] = useState(data);
-   const [filter, setFilter] = useState(data);
    const [inputSearch, setSearchValue] = useState("");
+   const [inputValue, setInputValue] = useState("");
+
+   const handleChange = (e) => {
+      const value = e.target.value;
+      setInputValue(value);
+   };
 
    const handleSearch = (e) => {
       const value = e.target.value;
       setSearchValue(value);
-
-      const lowercasedFilter = value.toLowerCase();
-      const filteredData = todoList.filter((item) =>
-         item.text.toLowerCase().includes(lowercasedFilter)
-      );
-      setFilter(filteredData);
    };
+
+   const lowercasedFilter = inputSearch.toLowerCase();
+   const filteredData = todoList.filter((item) =>
+      item.text.toLowerCase().includes(lowercasedFilter)
+   );
 
    return (
       <div>
          <ToDoTitle />
-         <ToDoForm
-            todoList={todoList}
-            setTodoList={setTodoList}
-            inputSearch={inputSearch}
-            handleSearch={handleSearch}
-            setFilter={setFilter}
-         />
-         <ToDoList
-            filter={filter}
-            setFilter={setFilter}
+         <ToDoSearch inputValue={inputSearch} handleChange={handleSearch} />
+         <ToDoAdd inputValue={inputValue} handleChange={handleChange} />
+         <ToDoAddBtn
             setTodoList={setTodoList}
             todoList={todoList}
+            inputValue={inputValue}
          />
+         <ToDoList setTodoList={setTodoList} todoList={filteredData} />
       </div>
    );
 };

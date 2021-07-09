@@ -1,21 +1,21 @@
 import PropTypes from "prop-types";
 
 const ToDoSearch = (props) => {
-   const { inputSearch, handleSearch } = props;
+   const { inputValue, handleChange } = props;
 
    return (
       <p>
          <label>
             Search
-            <input type="text" value={inputSearch} onChange={handleSearch} />
+            <input type="text" value={inputValue} onChange={handleChange} />
          </label>
       </p>
    );
 };
 
 ToDoSearch.propTypes = {
-   inputSearch: PropTypes.string,
-   handleSearch: PropTypes.func,
+   inputValue: PropTypes.string,
+   handleChange: PropTypes.func,
 };
 
 export default ToDoSearch;

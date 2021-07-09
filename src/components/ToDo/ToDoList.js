@@ -3,19 +3,19 @@ import PropTypes from "prop-types";
 import ToDoItem from "./ToDoItem";
 
 const ToDoList = (props) => {
-   const { filter, todoList, setFilter, setTodoList } = props;
+   const { todoList, setTodoList } = props;
 
    const handleRemove = (todoItemID) => {
-      // const items = todoList.filter((item) => item.id !== todoItemID);
-      // setTodoList(items);
+      const items = todoList.filter((item) => item.id !== todoItemID);
+      setTodoList(items);
    };
 
    return (
       <ul>
-         {filter.map((item) => (
+         {todoList.map((item) => (
             <ToDoItem
                key={item.id}
-               handleRemove={handleRemove}
+               handleClick={handleRemove}
                todoItem={item}
             />
          ))}
@@ -24,12 +24,6 @@ const ToDoList = (props) => {
 };
 
 ToDoList.propTypes = {
-   filter: PropTypes.arrayOf(
-      PropTypes.shape({
-         id: PropTypes.number,
-         text: PropTypes.string,
-      })
-   ),
    todoList: PropTypes.arrayOf(
       PropTypes.shape({
          id: PropTypes.number,

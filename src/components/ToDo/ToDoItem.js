@@ -1,15 +1,14 @@
-import React from "react";
 import PropTypes from "prop-types";
 
 const ToDoItem = (props) => {
-   const { handleRemove, todoItem } = props;
+   const { handleClick, todoItem } = props;
 
    return (
       <li>
          <p>{todoItem.text}</p>
          <button
             onClick={() => {
-               handleRemove(todoItem.id);
+               handleClick(todoItem.id);
             }}
          >
             Remove
