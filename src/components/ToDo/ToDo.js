@@ -42,7 +42,11 @@ const ToDo = () => {
             todoList={todoList}
             inputValue={inputValue}
          />
-         <ToDoList setTodoList={setTodoList} todoList={filteredData} />
+         <ToDoList
+            setTodoList={setTodoList}
+            todoList={filteredData}
+            todoListRemove={todoList}
+         />
       </div>
    );
 };
