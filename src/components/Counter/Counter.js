@@ -1,23 +1,29 @@
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 const Counter = () => {
-   const [count, setCount] = useState(0);
-
-   const handleCountPlus = () => {
-       setCount(count + 1)
-   }
-
-   const handleCountMinus = () => {
-       setCount(count - 1)
-   }
+   const selectCount = (state) => state.count;
+   const count = useSelector(selectCount);
+   const dispatch = useDispatch();
 
    return (
       <div>
          <p>{count}</p>
-         <button onClick={handleCountPlus}>+</button>
-         <button onClick={handleCountMinus}>-</button>
+         <button
+            onClick={() => {
+               dispatch({ type: "counter/incremented" });
+            }}
+         >
+            +
+         </button>
+         <button
+            onClick={() => {
+               dispatch({ type: "counter/decremented" });
+            }}
+         >
+            -
+         </button>
       </div>
    );
-}
+};
 
-export default Counter
+export default Counter;
